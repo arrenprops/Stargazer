@@ -1,0 +1,33 @@
+<div class='content'></div>
+<div class="container photoPage">
+  <div class="searchRow row">
+    <div class="col-sm-offset-3 col-sm-6 well">
+      <label for="searchBox"><h2>Filter Pictures</h2> 
+      <input type="text" class="form-control"  id='searchRowBox' ng-model='searchBox' 
+      placeholder='Stars/Galaxies/Nebulae/Etc.'></label><br>
+      <h2>Search For More Pics</h2>
+      <label for="keywordOne">Keyword #1 <input type="text" class="form-control"  ng-model='keywordOne'></label><br>
+      <label for="keywordTwo">Keyword #2<input type="text" class="form-control" ng-model="keywordTwo"></label><br>
+      <label for="keywordThree">Keyword #3<input type="text" class="form-control" ng-model="keywordThree"></label><br>
+      <button class="notASpecialButton" ng-click="searchForPics()">Search For Pics</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="fullPic">
+      <img src="{{fullPicURL}}" alt="#">
+      <p id="fullPicTitle">{{fullPicTitle}}</p>
+    </div>
+  </div>
+  <div class="photoRow">
+    <table>
+      <td class="col-sm-4 photoBox" ng-repeat="pic in spacePics.photos.photo|filter: searchBox|limitTo:12:page">
+        <img src="{{pic.url}}" alt="#" class="pic" ng-click="seeFull(pic)">
+        <p class="picTitle">{{pic.title}}</p>
+      </td>
+    </table>
+  </div>
+  <div class="row">
+    <button class="navButt btn btn-lg" ng-click="nextFunc()">Next</button>
+    <button class="navButt btn btn-lg" ng-click="backFunc()">Back</button>
+  </div>
+</div>

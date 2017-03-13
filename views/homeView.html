@@ -1,0 +1,33 @@
+<div class='content'></div>
+<div class="container">
+  <div class="row">
+    <div class="conditionBox col-sm-offset-3 col-sm-6 well" ng-if="welcomeOrCondition">
+      <p>Welcome to Stargazer! Find your location on the map to locate the stars in your sky and the conditions in your area!</p>
+      <p>See Something You Like? Search for it on the photos page!</p>
+    </div>
+    <div class="conditionBox col-sm-offset-3 col-sm-6 well" ng-if="weather">
+      <ul>
+        <li>City: {{weather.current_observation.display_location.full}}</li>
+        <li>Temperature: {{weather.current_observation.feelslike_string}}</li>
+        <li>Visibility: {{weather.current_observation.visibility_mi}}</li>
+        <li> Weather: {{weather.current_observation.weather}}<img src="{{weather.current_observation.icon_url}}" alt="#"> </li>
+        <li> Moonrise: {{moonrise}} Moonset: {{moonset}}</li>
+        <li> Moonphase: {{weather.moon_phase.phaseofMoon}}</li>
+        <li>Percent Illuminated: %{{weather.moon_phase.percentIlluminated}}</li>
+        <li>Sunset: {{sunset}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div id="map"></div>
+    </div>
+    <div class="col-sm-6">
+      <img src="./images/northamerica2006B.png" alt="Light Pollution Map" class="lightPollution">
+    </div>
+  </div>
+  <div ng-if="!welcomeOrCondition">
+    <iframe src="{{astroURL}}" style="width:100%; margin-top: -71px; height: 960px; margin-bottom: -50px;"></iframe>
+  </div>
+</div>
+<div class="starBox2"></div>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="stargazerApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <!-- Angular 1.5.7 CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+  <!--Bootstrap CDN-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+    <!--stylesheet-->
+    <link rel="stylesheet" href="./styles.css">
+    <!--Google Maps-->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+      <!--UI Router-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+</head>
+
+<body id="body">
+  <header class="starBox container-fluid">
+    <div class="row">
+      <div class="fore-scope"></div>
+      <div class="logo"></div>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <a ui-sref="contact"><button class="jupiter"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></button></a>
+        <a ui-sref="photos"><button class="jupiter"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></button></a>
+        <a ui-sref="homeView"><button class="jupiter"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></button></a>
+        <h3>Stargazer</h3>
+      </nav>
+    </div>
+  </header>
+  <div ui-view></div>
+  <footer style='height: 100px; width: 100%'>
+    <div class="container">
+      <div class="col-sm-4">
+        <h2>Stargazer</h2>
+      </div>
+      <div class="col-sm-4">
+        <p style="float: right">Powered By:</p>
+      </div>
+      <div class="col-sm-4">
+        <ul>
+          <a href="http://www.wunderground.com">
+            <li>Wunderground.com</li>
+          </a>
+          <a href="http://www.flickr.com">
+            <li>Flickr.com</li>
+          </a>
+          <a href="http://www.sky-maps.org">
+            <li>Sky-Maps.Org</li>
+          </a>
+          <a href="http://www.google.com">
+            <li>GoogleMaps.Com</li>
+          </a>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script src="./app.js"></script>
+  <script src="./jquery.js"></script>
+  <script defer src="./controllers/stargazerController.js"></script>
+  <script src="./controllers/pictureController.js"></script>
+  <script src="./services/pictureService.js"></script>
+  <script>
+    function initMap() {
+      scopeRef.initMapController();
+    }
+    // Delay Google Maps
+    setTimeout(function () {
+      var headID = document.getElementsByTagName("head")[0];
+      var newScript = document.createElement('script');
+      newScript.type = 'text/javascript';
+      newScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyANfY3-bF4dFYLK44qMkHXqV3DVPdB1pLw&callback=initMap';
+      headID.appendChild(newScript);
+    }, 1000);
+  </script>
+</body>
+
+</html>
