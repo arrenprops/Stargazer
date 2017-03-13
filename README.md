@@ -9,6 +9,7 @@ Stargazer was created using the following languages:
 - JavaScript
 - AngularJS
 - JQuery
+- BootStrap
 - WebAPI
 
 Stargazer uses the following APIs
